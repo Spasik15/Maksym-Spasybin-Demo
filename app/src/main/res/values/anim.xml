@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="fade_duration">300</integer>
+
+    <integer name="short_duration">300</integer>
+    <integer name="long_duration">500</integer>
+
+</resources>

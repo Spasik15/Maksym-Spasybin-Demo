@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/first_fragment">
+
+    <fragment
+        android:id="@+id/first_fragment"
+        android:name="by.lifetech.test.presentation.screen.first.FirstFragment"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_first_fragment_to_second_fragment"
+            app:destination="@id/second_fragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out">
+
+            <argument
+                android:name="productNamePresentationModel"
+                app:argType="by.lifetech.test.presentation.model.ProductNamePresentationModel" />
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/second_fragment"
+        android:name="by.lifetech.test.presentation.screen.second.SecondFragment"
+        tools:layout="@layout/fragment_second">
+
+        <argument
+            android:name="productNamePresentationModel"
+            app:argType="by.lifetech.test.presentation.model.ProductNamePresentationModel" />
+
+    </fragment>
+
+</navigation>
