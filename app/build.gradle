@@ -13,7 +13,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "by.lifetech.test"
+        applicationId "com.example.maksymspasybindemo"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/first_fragment"
-        android:name="by.lifetech.test.presentation.screen.first.FirstFragment"
+        android:name="com.example.maksymspasybindemo.presentation.screen.first.FirstFragment"
         tools:layout="@layout/fragment_first">
 
         <action
@@ -20,7 +20,7 @@
 
             <argument
                 android:name="productNamePresentationModel"
-                app:argType="by.lifetech.test.presentation.model.ProductNamePresentationModel" />
+                app:argType="com.example.maksymspasybindemo.presentation.model.ProductNamePresentationModel" />
 
         </action>
 
@@ -28,12 +28,12 @@
 
     <fragment
         android:id="@+id/second_fragment"
-        android:name="by.lifetech.test.presentation.screen.second.SecondFragment"
+        android:name="com.example.maksymspasybindemo.presentation.screen.second.SecondFragment"
         tools:layout="@layout/fragment_second">
 
         <argument
             android:name="productNamePresentationModel"
-            app:argType="by.lifetech.test.presentation.model.ProductNamePresentationModel" />
+            app:argType="com.example.maksymspasybindemo.presentation.model.ProductNamePresentationModel" />
 
     </fragment>
 
