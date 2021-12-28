@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-import by.lifetech.test.presentation.screen.MainActivity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -26,9 +27,6 @@ abstract class BaseFragment<VIEW_BINDING : ViewBinding, VIEW_MODEL : ViewModel>(
     protected abstract val binding: VIEW_BINDING
 
     protected abstract val viewModel: VIEW_MODEL
-
-    protected val mainActivity: MainActivity?
-        get() = activity as MainActivity?
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,6 +48,7 @@ abstract class BaseFragment<VIEW_BINDING : ViewBinding, VIEW_MODEL : ViewModel>(
 
     protected fun <T> Flow<T>.listenValue(action: suspend (T) -> Unit) {
         onEach { action.invoke(it) }
+            .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
             .launchIn(lifecycleScope)
     }
 

@@ -1,20 +1,25 @@
 package by.lifetech.test.presentation.screen
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import by.lifetech.test.data.cloud.mapper.toDomain
 import by.lifetech.test.data.cloud.response.ProductResponseDataModel
 import by.lifetech.test.databinding.ActivityMainBinding
-import by.lifetech.test.presentation.base.BaseActivity
 import by.lifetech.test.presentation.screen.MainViewModel.Companion.FILE_PATH
 import by.lifetech.test.utils.presentation.readAssetsFile
 import com.google.gson.Gson
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.scope.Scope
 
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity(), AndroidScopeComponent {
+
+    override val scope: Scope by activityScope()
 
     private lateinit var binding: ActivityMainBinding
 
-    private val viewModel: MainViewModel by viewModel()
+    private val viewModel by viewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

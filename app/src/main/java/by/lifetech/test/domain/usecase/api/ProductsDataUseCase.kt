@@ -1,6 +1,7 @@
 package by.lifetech.test.domain.usecase.api
 
 import by.lifetech.test.domain.model.ProductDomainModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharedFlow
 
 /**
@@ -8,5 +9,5 @@ import kotlinx.coroutines.flow.SharedFlow
  */
 interface ProductsDataUseCase {
 
-    fun execute(): SharedFlow<List<ProductDomainModel>>
+    fun execute(): Flow<List<ProductDomainModel>>
 }

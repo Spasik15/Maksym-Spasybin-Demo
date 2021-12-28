@@ -1,10 +1,9 @@
 package by.lifetech.test.utils.viewbinding
 
 import androidx.annotation.MainThread
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.viewbinding.ViewBinding
 import by.lifetech.test.utils.handler.MainHandler
 import kotlin.properties.ReadOnlyProperty
@@ -49,11 +48,10 @@ abstract class ViewBindingPropertyDelegate<in R : Any, T : ViewBinding>(
     }
 
     @Suppress("unused", "UNUSED_PARAMETER")
-    private inner class ClearOnDestroyViewLifecycleObserver : LifecycleObserver {
+    private inner class ClearOnDestroyViewLifecycleObserver : DefaultLifecycleObserver {
 
         @MainThread
-        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-        fun onDestroy(owner: LifecycleOwner) {
+        override fun onDestroy(owner: LifecycleOwner) {
             clear()
         }
     }

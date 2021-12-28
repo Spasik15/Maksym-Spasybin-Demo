@@ -1,6 +1,7 @@
 package by.lifetech.test.domain.repository
 
 import by.lifetech.test.domain.model.ProductDomainModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharedFlow
 
 /**
@@ -8,9 +9,9 @@ import kotlinx.coroutines.flow.SharedFlow
  */
 interface ProductRepository {
 
-    val productsDataFlow: SharedFlow<List<ProductDomainModel>>
+    val productsDataFlow: Flow<List<ProductDomainModel>>
 
     suspend fun saveProducts(productList: List<ProductDomainModel>)
 
-    suspend fun fetchProducts()
+//    suspend fun fetchProducts()
 }

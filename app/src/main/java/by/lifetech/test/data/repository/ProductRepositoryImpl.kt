@@ -5,14 +5,15 @@ import by.lifetech.test.data.db.mapper.toDbModel
 import by.lifetech.test.data.db.mapper.toDomain
 import by.lifetech.test.domain.model.ProductDomainModel
 import by.lifetech.test.domain.repository.ProductRepository
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.map
 import timber.log.Timber
 
 class ProductRepositoryImpl(
     private val productsDao: ProductsDao
 ) : ProductRepository {
 
-    override val productsDataFlow = MutableSharedFlow<List<ProductDomainModel>>()
+    override val productsDataFlow =
+        productsDao.getProducts().map { it.toDomain() }
 
     override suspend fun saveProducts(productList: List<ProductDomainModel>) {
         runCatching {
@@ -24,13 +25,4 @@ class ProductRepositoryImpl(
         }
     }
 
-    override suspend fun fetchProducts() {
-        runCatching {
-            productsDao.getProducts().toDomain()
-        }.onSuccess {
-            productsDataFlow.emit(it)
-        }.onFailure {
-            Timber.e(it)
-        }
-    }
 }

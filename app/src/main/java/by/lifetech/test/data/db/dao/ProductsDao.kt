@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import by.lifetech.test.data.db.model.ProductDataBaseModel
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProductsDao {
@@ -19,6 +20,6 @@ interface ProductsDao {
      * Method for getting products
      */
     @Query("SELECT * FROM productDataBaseModel")
-    suspend fun getProducts(): List<ProductDataBaseModel>
+    fun getProducts(): Flow<List<ProductDataBaseModel>>
 
 }
